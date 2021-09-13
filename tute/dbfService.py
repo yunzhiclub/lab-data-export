@@ -1,6 +1,7 @@
 import dbf
 
 
+# https://github.com/ethanfurman/dbf/tree/master/dbf
 class DbfService:
     table = None
 
@@ -14,6 +15,10 @@ class DbfService:
     def __init__(self, filename: str):
         self.table = dbf.Table(filename)
         self.table.open(dbf.READ_WRITE)
+
+    def print(self):
+        for record in self.table:
+            print(record)
 
     def close(self):
         self.table.close()

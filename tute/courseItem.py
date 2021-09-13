@@ -1,12 +1,12 @@
-# 实验项目
 from tute.course import Course
 
 
+# 实验项目
 class CourseItem:
-    id = 0
+    id = ''
     name = ''
     __course = Course()
-    classHours = 0
+    classHour = 0
     # 每组人数
     testerLengthPerGroup = 1
     # 实验人数
