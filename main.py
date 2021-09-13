@@ -12,26 +12,7 @@ def test():
     courses = []
     for i in excel.index:
         row = excel.loc[i]
-
         print(row[0])
-
-
-
-
-def start():
-    # 打开原始库
-    table = dbf.Table(filename='/Users/panjie/sync/work/x_symc.DBF')
-    table.open(dbf.READ_WRITE)
-    clear(table)
-    table.close()
-
-
-# 清空原表
-def clear(table):
-    for record in table:
-        print(record)
-        dbf.delete(record)
-    table.pack()
 
 
 if __name__ == '__main__':

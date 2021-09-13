@@ -2,7 +2,7 @@ import datetime
 import test
 
 
-# 实现项目
+# 实验详情
 class TestDetail:
     test = test()
     # 实验序号

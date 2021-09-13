@@ -1,7 +1,7 @@
 import datetime
 
 
-# 实验名称
+# 实验项目
 class Test:
     # 实验序号
     id = ''

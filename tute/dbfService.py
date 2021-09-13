@@ -1,0 +1,19 @@
+import dbf
+
+
+class DbfService:
+    table = None
+
+    # 清空原表
+    def clear(self, table):
+        for record in table:
+            print(record)
+            dbf.delete(record)
+        table.pack()
+
+    def DbfService(self, filename: str):
+        self.table = dbf.Table(filename)
+        self.open(dbf.READ_WRITE)
+
+    def close(self):
+        self.table.close()

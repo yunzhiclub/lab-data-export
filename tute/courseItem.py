@@ -19,3 +19,6 @@ class CourseItem:
     def set_course(self, course):
         self.__course = course
         self.testerTotalCount = course.testerNumber
+
+    def get_course(self):
+        return self.__course

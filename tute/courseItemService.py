@@ -21,3 +21,17 @@ class CourseItemService:
                 course_item.testRequirements = 2
             course_items.append(course_item)
         return course_items
+
+    # 合并实验名称相同的实验项目
+    def merge(self, courses_items):
+        # 合并去重，计算总实现人数
+        result = {}
+        for courses_item in courses_items:
+            key = str(courses_item.get_course().id) + str(courses_item.name)
+            if key in result:
+                # 重复击中，则增加实验人数
+                temp_course_item = result[key]
+                temp_course_item.testerTotalCount += courses_item.testerTotalCount
+            else:
+                result[key] = courses_item
+        return result
