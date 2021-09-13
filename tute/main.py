@@ -41,5 +41,5 @@ if __name__ == '__main__':
     dbf = DbfService(x_xymc)
     for test in tests:
         dbf.table.append(test.to_record())
-    # dbf.print()
+    dbf.print()
     dbf.close()

@@ -12,18 +12,18 @@ class Test:
     # 课程名称
     courseName = ''
     # 实验类别
-    courseType = ''
+    courseType = '3'
     # 计划学时数
     classHour = 0.0
     # 每组人数
     peopleLengthPerGroup = 1
     # 实验要求
     testRequirements = '2'
-    # 实验类型
-    testType = '2'
-    # 网络实验
+    # 实验类型(1基础，2专业基础，3专业，4科研）
+    testType = '3'
+    # 网络实验(0非，1是）
     netTest = '0'
-    # 设课方式
+    # 设课方式(0非独立授课，1独立授课）
     teachingMode = '0'
     # 专业分类号
     majorId = '0809'
@@ -44,7 +44,7 @@ class Test:
     # 输入日期
     inputDate = datetime.datetime(2021, 9, 11, 0, 0)
     # 审核
-    checked = '0'
+    checked = '1'
     # 审核日期
     checkDate = datetime.date(2021, 9, 11)
 
@@ -55,8 +55,6 @@ class Test:
         course = course_item.get_course()
         self.courseId = str(course.id)
         self.courseName = str(course.name)
-        print(course.type)
-        # self.courseType = str(course.type)
         self.classHour = course_item.classHour
         self.peopleLengthPerGroup = course_item.testerLengthPerGroup
         self.testRequirements = str(course_item.testRequirements)

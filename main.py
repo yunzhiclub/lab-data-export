@@ -1,19 +1,12 @@
 import pandas
 import dbf
 
-
-def test():
-    filename = '/Users/panjie/sync/work/task.xls'
-    excel = pandas.read_excel(filename)
-    print(excel.index)
-    print(excel.columns)
-    print(excel.shape)
-
-    courses = []
-    for i in excel.index:
-        row = excel.loc[i]
-        print(row[0])
+from tute.dbfService import DbfService
 
 
 if __name__ == '__main__':
-    test()
+    x_xymc = '/Users/panjie/sync/work/x_syxm.DBF'
+    # 写入实验项目
+    dbf = DbfService(x_xymc)
+    dbf.print()
+    dbf.close()

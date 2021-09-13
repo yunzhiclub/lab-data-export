@@ -11,10 +11,10 @@ class CourseItem:
     testerLengthPerGroup = 1
     # 实验人数
     testerTotalCount = 0
-    # 实验类型 (验证性、综合性）
-    testType = 1
-    # 实验要求 2必做
-    testRequirements = 2
+    # 实验类型 (演示型1, 验证性2、综合性3）
+    __testType = 2
+    # 实验要求 2选修 1必修 3其它
+    testRequirements = 1
 
     def set_course(self, course):
         self.__course = course
