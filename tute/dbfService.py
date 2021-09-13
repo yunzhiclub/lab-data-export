@@ -11,9 +11,9 @@ class DbfService:
             dbf.delete(record)
         table.pack()
 
-    def DbfService(self, filename: str):
+    def __init__(self, filename: str):
         self.table = dbf.Table(filename)
-        self.open(dbf.READ_WRITE)
+        self.table.open(dbf.READ_WRITE)
 
     def close(self):
         self.table.close()

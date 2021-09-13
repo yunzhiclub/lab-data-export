@@ -47,3 +47,7 @@ class Test:
     checked = '0'
     # 审核日期
     checkDate = datetime.date(2021, 9, 11)
+
+    def __init__(self, course_item):
+        self.name = course_item.name
+        self.courseId = str(course_item.get_course().id)
