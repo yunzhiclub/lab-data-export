@@ -59,11 +59,11 @@ class Test:
     # 校区
     schoolNumber = '0'
     # 输入日期
-    inputDate = datetime.datetime(2021, 9, 11, 0, 0)
+    datetime_now = datetime.datetime.now()
     # 审核
     checked = '1'
     # 审核日期
-    checkDate = datetime.date(2021, 9, 11)
+    date_now = datetime.datetime.now().date()
 
     # @param course_item CourseItem
     def __init__(self, course_item):
@@ -71,6 +71,10 @@ class Test:
         self.name = course_item.name
         course = course_item.get_course()
         self.courseId = str(course.id)
+        # 课程编号的长度固定为6位
+        while len(self.courseId) < 6:
+            self.courseId = '0' + self.courseId
+
         self.courseName = str(course.name)
         self.actualClassHour = course_item.classHour
         self.peopleLengthPerGroup = course_item.testerLengthPerGroup
@@ -123,9 +127,9 @@ class Test:
             '实验数字1': self.testNumber1,
             '实验数字2': self.testNumber2,
             '校区': self.schoolNumber,
-            '输入日期': self.inputDate,
+            '输入日期': self.datetime_now,
             '审核': self.checked,
-            '审核日期': self.checkDate
+            '审核日期': self.date_now
         }
 
     # 转化为实验项目
@@ -141,6 +145,7 @@ class Test:
             '实验者类别': self.testerType,
             '实验者对象': self.testerObject,
             '每组人数': self.peopleLengthPerGroup,
+            '计划学时数': self.classHour,
             '实际学时数': self.actualClassHour,
             '材料消耗费': self.material,
             '实验要求': self.testRequirements,
@@ -158,6 +163,7 @@ class Test:
             '授课专业': '',
             '实验地编号': '',
             '实验地名称': '',
+            '循环次数': 1,
             '项目数字1': self.testNumber1,
             '项目数字2': self.testNumber2,
             '项目字符1': '',
@@ -168,8 +174,8 @@ class Test:
             '标志': '',
             '内部编号': '',
             '输入人': '',
-            '输入日期': self.inputDate,
+            '输入日期': self.datetime_now,
             '审核人': '',
-            '审核日期': self.checkDate,
+            '审核日期': self.datetime_now,
             '审核': self.checked,
         }

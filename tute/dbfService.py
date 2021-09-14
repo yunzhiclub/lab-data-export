@@ -6,11 +6,12 @@ class DbfService:
     table = None
 
     # 清空原表
-    def clear(self, table):
-        for record in table:
-            print(record)
+    def clear(self):
+        print('开始清空原表:' + self.table.filename)
+        for record in self.table:
             dbf.delete(record)
-        table.pack()
+        self.table.pack()
+        print('清空原表完成')
 
     def __init__(self, filename: str):
         self.table = dbf.Table(filename)
