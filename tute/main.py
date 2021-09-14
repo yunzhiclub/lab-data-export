@@ -7,6 +7,7 @@ from tute.dbfService import DbfService
 if __name__ == '__main__':
     filename = '/Users/panjie/sync/work/task.xls'
     x_xymc = '/Users/panjie/sync/work/x_symc.DBF'
+    x_xymx = '/Users/panjie/sync/work/x_syxm.DBF'
 
     # 读EXCEL
     courseService = CourseService()
@@ -37,9 +38,16 @@ if __name__ == '__main__':
 
     print('整理成可写入dbf的项目数量:' + str(len(tests)))
 
-    # 写入实验项目
+    # 写入实验明细
     dbf = DbfService(x_xymc)
     for test in tests:
-        dbf.table.append(test.to_record())
+        dbf.table.append(test.to_symc())
+    dbf.print()
+    dbf.close()
+
+    # 写入实现项目
+    dbf = DbfService(x_xymx)
+    for test in tests:
+        dbf.table.append(test.to_syxm())
     dbf.print()
     dbf.close()

@@ -1,5 +1,4 @@
 from course import Course
-import pandas
 
 
 class CourseService:
@@ -16,10 +15,7 @@ class CourseService:
             courseobject.id = row[1]
             courseobject.name = row[2]
             courseobject.semester = row[3]
-            if row[4] == '必修':
-                courseobject.property = 0
-            else:
-                courseobject.property = 1
+            courseobject.property = row[4]
             courseobject.classHour = row[6]
             courseobject.testerNumber = row[9]
             courseobject.type = row[12]

@@ -10,7 +10,7 @@ class Course:
     # 学期
     semester = 0
     # 课程属性 1必修, 2选修, 3其它
-    property = 0
+    property = ''
     # 实验学时
     classHour = 0
     # 学生人数

@@ -12,9 +12,9 @@ class CourseItem:
     # 实验人数
     testerTotalCount = 0
     # 实验类型 (演示型1, 验证性2、综合性3）
-    __testType = 2
+    testType = ''
     # 实验要求 2选修 1必修 3其它
-    testRequirements = 1
+    testRequirements = ''
 
     def set_course(self, course):
         self.__course = course
