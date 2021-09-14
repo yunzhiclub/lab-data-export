@@ -4,14 +4,15 @@ from courseItemService import CourseItemService
 from tute.db.test import Test
 from tute.dbfService import DbfService
 
+
 if __name__ == '__main__':
-    filename = '/Users/panjie/sync/work/task.xls'
-    x_xymc = '/Users/panjie/sync/work/x_symc.DBF'
-    x_xyxm = '/Users/panjie/sync/work/x_syxm.DBF'
+    task_filename = './task.xls'
+    symc_filename = './x_symc.DBF'
+    syxm_filename = './x_syxm.DBF'
 
     # 读EXCEL
     courseService = CourseService()
-    excel = pandas.ExcelFile(filename)
+    excel = pandas.ExcelFile(task_filename)
     sheet0 = pandas.read_excel(excel)
     courses = courseService.get_course_from_excel(sheet0)
 
@@ -39,17 +40,19 @@ if __name__ == '__main__':
     print('整理成可写入dbf的项目数量:' + str(len(tests)))
 
     # 写入实验明细
-    dbf = DbfService(x_xymc)
+    dbf = DbfService(symc_filename)
     dbf.clear()
     for test in tests:
         dbf.table.append(test.to_symc())
-    dbf.print()
+    print('------------------------------- 实验项目基础信息 ---------------------------')
+    # dbf.print()
     dbf.close()
 
     # 写入实验项目
-    dbf = DbfService(x_xyxm)
+    dbf = DbfService(syxm_filename)
     dbf.clear()
     for test in tests:
         dbf.table.append(test.to_syxm())
+    print('------------------------------- 本学年实验项目 ---------------------------')
     # dbf.print()
     dbf.close()

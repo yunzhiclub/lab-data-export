@@ -12,7 +12,7 @@ class CourseService:
             row = excel.loc[i]
             courseobject = Course()
             courseobject.fileNo = row[0]
-            courseobject.id = row[1]
+            courseobject.id = str(row[1])
             courseobject.name = row[2]
             courseobject.semester = row[3]
             courseobject.property = row[4]
