@@ -1,5 +1,5 @@
 import datetime
-
+from tute.config import Config
 
 # 实验项目
 class Test:
@@ -99,6 +99,22 @@ class Test:
 
         self.suiteCount = course_item.testerTotalCount
         self.testerCount = course_item.testerTotalCount
+
+        conf = Config()
+        # 实验类别(1基础，2专业基础，3专业，4科研）
+        self.courseType = conf.courseType
+        # 网络实验(0非，1是）
+        self.netTest = conf.netTest
+        # 设课方式(0非独立授课，1独立授课）
+        self.teachingMode = conf.teachingMode
+        # 专业分类号
+        self.majorId = conf.majorId
+        # 专业名称
+        self.majorName = conf.majorName
+        # 单位编号
+        self.unitId = conf.unitId
+        # 单位名称(软件应用实验室)
+        self.unitName = conf.unitName
 
     # 转化为symc库
     def to_symc(self):
