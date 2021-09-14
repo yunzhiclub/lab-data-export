@@ -10,6 +10,9 @@ class CourseService:
             courseobject = Course()
             courseobject.fileNo = row[0]
             courseobject.id = str(row[1])
+            # 课程编号固定为6位
+            while len(courseobject.id) < 6:
+                courseobject.id = '0' + courseobject.id
             courseobject.name = row[2]
             courseobject.semester = row[3]
             courseobject.property = row[4]
