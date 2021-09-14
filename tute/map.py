@@ -1,8 +1,9 @@
 import datetime
 from tute.config import Config
 
+
 # 实验项目
-class Test:
+class Map:
     # 实验序号
     id = ''
     # 实验名称

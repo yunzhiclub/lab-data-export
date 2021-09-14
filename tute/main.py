@@ -1,7 +1,7 @@
 import pandas
 from courseService import CourseService
 from courseItemService import CourseItemService
-from tute.db.test import Test
+from tute.map import Map
 from tute.dbfService import DbfService
 
 
@@ -32,27 +32,27 @@ if __name__ == '__main__':
     print('合并后的项目数量:' + str(len(course_result_items)))
 
     # 映射数据
-    tests = []
+    maps = []
     for key in course_result_items:
         course_result_item = course_result_items[key]
-        tests.append(Test(course_result_item))
+        maps.append(Map(course_result_item))
 
-    print('整理成可写入dbf的项目数量:' + str(len(tests)))
+    print('整理成可写入dbf的项目数量:' + str(len(maps)))
 
     # 写入实验明细
     dbf = DbfService(symc_filename)
     dbf.clear()
-    for test in tests:
-        dbf.table.append(test.to_symc())
+    for m in maps:
+        dbf.table.append(m.to_symc())
     print('------------------------------- 实验项目基础信息 ---------------------------')
-    # dbf.print()
+    dbf.print()
     dbf.close()
 
     # 写入实验项目
     dbf = DbfService(syxm_filename)
     dbf.clear()
-    for test in tests:
-        dbf.table.append(test.to_syxm())
+    for m in maps:
+        dbf.table.append(m.to_syxm())
     print('------------------------------- 本学年实验项目 ---------------------------')
-    # dbf.print()
+    dbf.print()
     dbf.close()

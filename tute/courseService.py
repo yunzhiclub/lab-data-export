@@ -2,11 +2,8 @@ from course import Course
 
 
 class CourseService:
+    # 由excel表中获取所有课程信息
     def get_course_from_excel(self, excel) -> list:
-        print(excel.index)
-        print(excel.columns)
-        print(excel.shape)
-
         courses = []
         for i in excel.index:
             row = excel.loc[i]
@@ -19,6 +16,5 @@ class CourseService:
             courseobject.classHour = row[6]
             courseobject.testerNumber = row[9]
             courseobject.type = row[12]
-            print(repr(courseobject))
             courses.append(courseobject)
         return courses
