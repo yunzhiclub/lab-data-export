@@ -73,7 +73,13 @@ if __name__ == '__main__':
     dbf = DbfService(syxm_filename)
     dbf.clear()
     for m in maps:
-        dbf.table.append(m.to_syxm())
+        try:
+            dbf.table.append(m.to_syxm())
+        except BaseException as exception:
+            print('将数据写库时发生错误:', m.to_syxm())
+            print('错误信息:', exception)
+            error = 1
+            break
     print('-------------------------------  写入完成，实验项目信息如下： ---------------------------')
     dbf.print()
     dbf.close()
