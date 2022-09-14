@@ -3,6 +3,7 @@ version: '3.1'
 
 services:
   python:
+    container_name: tute-lab
     build:
       context: ./
     volumes:
