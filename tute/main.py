@@ -10,8 +10,9 @@ pp = pprint.PrettyPrinter(indent=4)
 
 if __name__ == '__main__':
     task_filename = './task.xls'
-    symc_filename = './x_symc.DBF'
-    syxm_filename = './x_syxm.DBF'
+    symc_filename = './x_symc.dbf'
+    syxm_filename = './x_syxm.dbf'
+
 
     # 读EXCEL
     courseService = CourseService()
