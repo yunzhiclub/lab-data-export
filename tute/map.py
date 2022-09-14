@@ -1,5 +1,5 @@
 import datetime
-from tute.config import Config
+from config import Config
 
 
 # 实验项目
@@ -87,13 +87,14 @@ class Map:
         else:
             self.testRequirements = '3'
 
-        if course_item.testType == '演示型':
+        if course_item.testType == '演示型' or course_item.testType == '演示性' or course_item.testType == '演示':
             self.testType = '1'
-        elif course_item.testType == '验证型':
+        elif course_item.testType == '验证型' or course_item.testType == '验证性' or course_item.testType == '验证':
             self.testType = '2'
-        elif course_item.testType == '综合型':
+        elif course_item.testType == '综合型' or course_item.testType == '综合性' or course_item.testType == '综合':
             self.testType = '3'
-        elif course_item.testType == '设计研究':
+        elif course_item.testType == '设计研究' or course_item.testType == '设计性' or course_item.testType == '设计性'\
+                or course_item.testType == '设计':
             self.testType = '4'
         else:
             self.testType = '5'

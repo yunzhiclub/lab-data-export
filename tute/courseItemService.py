@@ -13,10 +13,10 @@ class CourseItemService:
             course_item.set_course(course)
             course_item.id = row[0]
             course_item.name = str(row[1]).strip()
-            course_item.classHour = row[3]
-            course_item.testerLengthPerGroup = row[4]
-            course_item.testType = 1
-            course_item.testType = str(row[5]).strip()
+            course_item.classHour = row[2]
+            course_item.testerLengthPerGroup = row[3]
+            course_item.testType = str(row[4]).strip()
+            course_item.testRequirements = str(row[5]).strip()
             course_items.append(course_item)
 
         return course_items

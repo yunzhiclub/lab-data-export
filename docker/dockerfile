@@ -1,0 +1,7 @@
+FROM python:3.9-buster
+RUN python3 -m pip install aenum==3.1.0
+RUN python3 -m pip install dbf==0.99.1
+RUN python3 -m pip install numpy==1.21.2
+RUN python3 -m pip install pandas==1.3.3
+RUN python3 -m pip install xlrd==2.0.1
+

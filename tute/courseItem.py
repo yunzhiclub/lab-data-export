@@ -1,4 +1,4 @@
-from tute.course import Course
+from course import Course
 
 
 # 实验项目
@@ -22,3 +22,8 @@ class CourseItem:
 
     def get_course(self):
         return self.__course
+
+    def __str__(self):
+        return '名称:' + self.name + '每组人数' + str(self.testerLengthPerGroup) +\
+            '实验人数：' + str(self.testerTotalCount) + '实验类型:' + str(self.testType)\
+               + '实验要求:' + self.testRequirements
