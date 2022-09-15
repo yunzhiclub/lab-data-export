@@ -44,6 +44,8 @@ class Map:
     testerType = '3'
     # 实验者对象(1校内）
     testerObject = '1'
+    # 循环次数
+    cycleIndex = 1
 
     # 专业名称
     majorName = '计算机类'
@@ -80,9 +82,9 @@ class Map:
         self.actualClassHour = course_item.classHour
         self.peopleLengthPerGroup = course_item.testerLengthPerGroup
 
-        if course_item.testRequirements == '必修':
+        if course_item.testRequirements in ['必修', '必做']:
             self.testRequirements = '1'
-        elif course_item.testRequirements == '选修':
+        elif course_item.testRequirements == ['选修', '选做']:
             self.testRequirements = '2'
         else:
             self.testRequirements = '3'
@@ -113,8 +115,11 @@ class Map:
         elif courseType == '科研':
             self.courseType = '4'
 
+
+
         self.testerCount = course_item.testerTotalCount
         
+
         conf = Config()
         # 设课方式(0非独立授课，1独立授课）
         self.teachingMode = conf.teachingMode
@@ -131,6 +136,8 @@ class Map:
 
         # 实验套数
         self.suiteCount = conf.suiteCount
+        # 循环次数
+        self.cycleIndex = -(self.testerCount // -self.suiteCount)
 
     # 转化为symc库
     def to_symc(self):
@@ -195,7 +202,7 @@ class Map:
             '授课专业': '',
             '实验地编号': '',
             '实验地名称': '',
-            '循环次数': 1,
+            '循环次数': self.cycleIndex,
             '项目数字1': self.testNumber1,
             '项目数字2': self.testNumber2,
             '项目字符1': '',
