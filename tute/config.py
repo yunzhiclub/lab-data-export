@@ -14,3 +14,5 @@ class Config:
     unitId = '042012'
     # 单位名称(软件应用实验室)
     unitName = '软件应用实验室'
+    # 实验套数
+    suiteCount = 80

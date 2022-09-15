@@ -99,7 +99,7 @@ class Map:
         else:
             self.testType = '5'
 
-        self.suiteCount = course_item.testerTotalCount
+        
         self.testerCount = course_item.testerTotalCount
 
         conf = Config()
@@ -117,6 +117,8 @@ class Map:
         self.unitId = conf.unitId
         # 单位名称(软件应用实验室)
         self.unitName = conf.unitName
+        # 实验套数
+        self.suiteCount = conf.suiteCount
 
     # 转化为symc库
     def to_symc(self):
@@ -126,7 +128,7 @@ class Map:
             '课程编号': self.courseId,
             '课程名称': self.courseName,
             '实验类别': self.courseType,
-            '计划学时数': self.classHour,
+            '计划学时数': self.actualClassHour,
             '每组人数': self.peopleLengthPerGroup,
             '实验要求': self.testRequirements,
             '实验类型': self.testType,
@@ -163,7 +165,7 @@ class Map:
             '实验者类别': self.testerType,
             '实验者对象': self.testerObject,
             '每组人数': self.peopleLengthPerGroup,
-            '计划学时数': self.classHour,
+            '计划学时数': self.actualClassHour,
             '实际学时数': self.actualClassHour,
             '材料消耗费': self.material,
             '实验要求': self.testRequirements,
