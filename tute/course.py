@@ -1,3 +1,4 @@
+from config import Config
 
 
 class Course:
@@ -17,8 +18,19 @@ class Course:
     testerNumber = 0
     # 课程分类
     type = 0
+    # 是否网络实验
+    netTest = '0'
+    # 实验类型(1基础，2专业基础，3专业，4科研)
+    courseType = '3'
+    # 实验室名称
+    unitName = ''
 
     def __repr__(self):
         return self.name
 
-
+    # default constructor
+    def __init__(self):
+        conf = Config()
+        self.netTest = config.netTest
+        self.courseType = config.courseType
+        self.unitName = config.unitName

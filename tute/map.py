@@ -99,24 +99,39 @@ class Map:
         else:
             self.testType = '5'
 
-        
-        self.testerCount = course_item.testerTotalCount
 
-        conf = Config()
+        # 是否网络实验
+        if course_item.get_course().netTest == '是':
+            self.netTest = '1'
+
         # 实验类别(1基础，2专业基础，3专业，4科研）
-        self.courseType = conf.courseType
-        # 网络实验(0非，1是）
-        self.netTest = conf.netTest
+        courseType = course_item.get_course().courseType
+        if courseType == '基础':
+            self.courseType = '1'
+        elif courseType == '专业基础':
+            self.courseType = '2'
+        elif courseType == '科研':
+            self.courseType = '4'
+
+        self.testerCount = course_item.testerTotalCount
+        
+        conf = Config()
+
+        # 单位编号
+        self.unitId = conf.unitId
         # 设课方式(0非独立授课，1独立授课）
         self.teachingMode = conf.teachingMode
         # 专业分类号
         self.majorId = conf.majorId
         # 专业名称
         self.majorName = conf.majorName
-        # 单位编号
-        self.unitId = conf.unitId
+
         # 单位名称(软件应用实验室)
-        self.unitName = conf.unitName
+        if len(course_item.get_course().unitName) > 0:
+            self.unitName = course_item.get_course().unitName
+        else:
+            self.unitName = conf.unitName
+        
         # 实验套数
         self.suiteCount = conf.suiteCount
 
