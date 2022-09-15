@@ -1,5 +1,3 @@
-from config import Config
-
 
 class Course:
     # 原始档案编号
@@ -23,12 +21,7 @@ class Course:
     # 实验类型(1基础，2专业基础，3专业，4科研)
     courseType = '专业'
     # 实验室名称
-    unitName = ''
+    unitName = '软件应用实验室'
 
     def __repr__(self):
-        return self.name
-
-    # default constructor
-    def __init__(self):
-        self.unitName = config.unitName
-
+        return self.name + self.unitName

@@ -116,9 +116,6 @@ class Map:
         self.testerCount = course_item.testerTotalCount
         
         conf = Config()
-
-        # 单位编号
-        self.unitId = conf.unitId
         # 设课方式(0非独立授课，1独立授课）
         self.teachingMode = conf.teachingMode
         # 专业分类号
@@ -127,6 +124,11 @@ class Map:
         self.majorName = conf.majorName
         # 单位名称
         self.unitName = course_item.get_course().unitName
+        # 单位编号
+        if self.unitName not in list(conf.units.values()):
+            raise RuntimeError('实验室名称:' + self.unitName + '未找到')
+        self.unitId = list(conf.units.keys())[list(conf.units.values()).index(self.unitName)]
+
         # 实验套数
         self.suiteCount = conf.suiteCount
 
