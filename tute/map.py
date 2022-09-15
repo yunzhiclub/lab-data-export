@@ -125,13 +125,8 @@ class Map:
         self.majorId = conf.majorId
         # 专业名称
         self.majorName = conf.majorName
-
-        # 单位名称(软件应用实验室)
-        if len(course_item.get_course().unitName) > 0:
-            self.unitName = course_item.get_course().unitName
-        else:
-            self.unitName = conf.unitName
-        
+        # 单位名称
+        self.unitName = course_item.get_course().unitName
         # 实验套数
         self.suiteCount = conf.suiteCount
 

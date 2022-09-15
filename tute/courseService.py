@@ -20,7 +20,7 @@ class CourseService:
             courseobject.testerNumber = row[9]
             courseobject.type = row[12]
             if str(row[14]).strip() == '是':
-                courseobject.netTest = '1'
+                courseobject.netTest = '是'
             if str(row[15]).strip() in ['基础', '专业基础', '专业', '科研']:
                 courseobject.courseType = str(row[15]).strip()
             if len(str(row[16]).strip()) > 0:
