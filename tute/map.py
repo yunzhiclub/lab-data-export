@@ -44,6 +44,8 @@ class Map:
     testerType = '3'
     # 实验者对象(1校内）
     testerObject = '1'
+    # 循环次数
+    cycleIndex = 1
 
     # 专业名称
     majorName = '计算机类'
@@ -80,9 +82,9 @@ class Map:
         self.actualClassHour = course_item.classHour
         self.peopleLengthPerGroup = course_item.testerLengthPerGroup
 
-        if course_item.testRequirements == '必修':
+        if course_item.testRequirements in ['必修', '必做']:
             self.testRequirements = '1'
-        elif course_item.testRequirements == '选修':
+        elif course_item.testRequirements == ['选修', '选做']:
             self.testRequirements = '2'
         else:
             self.testRequirements = '3'
@@ -99,24 +101,43 @@ class Map:
         else:
             self.testType = '5'
 
-        self.suiteCount = course_item.testerTotalCount
+
+        # 是否网络实验
+        if course_item.get_course().netTest == '是':
+            self.netTest = '1'
+
+        # 实验类别(1基础，2专业基础，3专业，4科研）
+        courseType = course_item.get_course().courseType
+        if courseType == '基础':
+            self.courseType = '1'
+        elif courseType == '专业基础':
+            self.courseType = '2'
+        elif courseType == '科研':
+            self.courseType = '4'
+
+
+
         self.testerCount = course_item.testerTotalCount
+        
 
         conf = Config()
-        # 实验类别(1基础，2专业基础，3专业，4科研）
-        self.courseType = conf.courseType
-        # 网络实验(0非，1是）
-        self.netTest = conf.netTest
         # 设课方式(0非独立授课，1独立授课）
         self.teachingMode = conf.teachingMode
         # 专业分类号
         self.majorId = conf.majorId
         # 专业名称
         self.majorName = conf.majorName
+        # 单位名称
+        self.unitName = course_item.get_course().unitName
         # 单位编号
-        self.unitId = conf.unitId
-        # 单位名称(软件应用实验室)
-        self.unitName = conf.unitName
+        if self.unitName not in list(conf.units.values()):
+            raise RuntimeError('实验室名称:' + self.unitName + '未找到')
+        self.unitId = list(conf.units.keys())[list(conf.units.values()).index(self.unitName)]
+
+        # 实验套数
+        self.suiteCount = conf.suiteCount
+        # 循环次数
+        self.cycleIndex = -(self.testerCount // -self.suiteCount)
 
     # 转化为symc库
     def to_symc(self):
@@ -126,7 +147,7 @@ class Map:
             '课程编号': self.courseId,
             '课程名称': self.courseName,
             '实验类别': self.courseType,
-            '计划学时数': self.classHour,
+            '计划学时数': self.actualClassHour,
             '每组人数': self.peopleLengthPerGroup,
             '实验要求': self.testRequirements,
             '实验类型': self.testType,
@@ -163,7 +184,7 @@ class Map:
             '实验者类别': self.testerType,
             '实验者对象': self.testerObject,
             '每组人数': self.peopleLengthPerGroup,
-            '计划学时数': self.classHour,
+            '计划学时数': self.actualClassHour,
             '实际学时数': self.actualClassHour,
             '材料消耗费': self.material,
             '实验要求': self.testRequirements,
@@ -181,7 +202,7 @@ class Map:
             '授课专业': '',
             '实验地编号': '',
             '实验地名称': '',
-            '循环次数': 1,
+            '循环次数': self.cycleIndex,
             '项目数字1': self.testNumber1,
             '项目数字2': self.testNumber2,
             '项目字符1': '',

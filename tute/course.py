@@ -1,5 +1,4 @@
 
-
 class Course:
     # 原始档案编号
     fileNo = '0'
@@ -17,8 +16,12 @@ class Course:
     testerNumber = 0
     # 课程分类
     type = 0
+    # 网络实验(0非，1是）
+    netTest = '非'
+    # 实验类型(1基础，2专业基础，3专业，4科研)
+    courseType = '专业'
+    # 实验室名称
+    unitName = '软件应用实验室'
 
     def __repr__(self):
-        return self.name
-
-
+        return self.name + self.unitName
