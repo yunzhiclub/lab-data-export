@@ -1,11 +1,11 @@
-高校实验项目及人员管理系统 辅助系统
+高校实验项目及人员(教工三表)管理系统 辅助系统
 ----
 
 == 开发环境
 系统环境依赖于docker，具体步骤步骤如下
 
 ```bash
-$ cd tute
+$ cd docker
 $ docker-compose up -d
 $ docker exec -it tute-lab /bin/bash
 root$ cd /root/tute
