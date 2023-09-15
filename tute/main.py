@@ -28,6 +28,7 @@ if __name__ == '__main__':
 
     # 根据course读取实验项目
     for course in courses:
+        print('开始读取sheet:', str(course.fileNo) + '-' + str(course.semester))
         sheet = pandas.read_excel(excel, str(course.fileNo) + '-' + str(course.semester))
         coursesItems.extend(courseItemService.get_course_items_from_sheet(sheet, course))
 
