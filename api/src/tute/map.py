@@ -1,5 +1,5 @@
 import datetime
-from config import Config
+from .config import Config
 
 
 # 实验项目

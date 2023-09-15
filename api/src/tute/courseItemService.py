@@ -1,4 +1,4 @@
-from courseItem import CourseItem
+from .courseItem import CourseItem
 
 
 # 实验项目

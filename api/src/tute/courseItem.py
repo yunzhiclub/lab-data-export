@@ -1,4 +1,4 @@
-from course import Course
+from .course import Course
 
 
 # 实验项目

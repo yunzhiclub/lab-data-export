@@ -3,13 +3,12 @@ import string
 import random
 import shutil
 
-
 import pandas
 import pprint
-from courseService import CourseService
-from courseItemService import CourseItemService
-from map import Map
-from dbfService import DbfService
+from .courseService import CourseService
+from .courseItemService import CourseItemService
+from .map import Map
+from .dbfService import DbfService
 pp = pprint.PrettyPrinter(indent=4)
 
 
@@ -21,13 +20,11 @@ def random_str(length=6):
 def start(task_filename='./task_wx.xls'):
     logs = ""
     suffix = random_str()
-    symc_filename = './x_symc_' + suffix + '.dbf'
-    syxm_filename = './x_syxm_' + suffix + '.dbf'
-    shutil.copyfile('./x_symc.dbf', symc_filename)
-    shutil.copyfile('./x_syxm.dbf', syxm_filename)
-
-    symc_filename = os.path.abspath(symc_filename)
-    syxm_filename = os.path.abspath(syxm_filename)
+    current_dir = os.path.dirname(__file__)
+    symc_filename = current_dir + '/x_symc_' + suffix + '.dbf'
+    syxm_filename = current_dir + '/x_syxm_' + suffix + '.dbf'
+    shutil.copyfile(current_dir + '/x_symc.dbf', symc_filename)
+    shutil.copyfile(current_dir + '/x_syxm.dbf', syxm_filename)
     files = [symc_filename, syxm_filename]
 
     # 读EXCEL

@@ -2,7 +2,7 @@ import os
 import shutil
 
 from django.http import HttpResponse
-from tute.main import start
+from .tute.main import start
 from zipfile import ZipFile
 
 def upload(request):
